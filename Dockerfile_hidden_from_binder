@@ -1,0 +1,15 @@
+FROM continuumio/miniconda3
+ENV TINI_VERSION v0.6.0
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/bin/tini
+RUN chmod +x /usr/bin/tini
+ENTRYPOINT ["/usr/bin/tini", "--"]
+WORKDIR /app
+COPY binder/environment.yml .
+RUN conda env create -f environment.yml
+RUN echo "conda activate postgres-example" >> ~/.bashrc
+SHELL ["/bin/bash", "--login", "-c"]
+RUN conda install nb_conda_kernels ipykernel
+WORKDIR /notebooks
+COPY notebooks .
+CMD jupyter notebook --allow-root --no-browser --NotebookApp.token="" --ip="0.0.0.0" --notebook-dir=/notebooks
+EXPOSE 8888
