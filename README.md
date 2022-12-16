@@ -1,18 +1,17 @@
-# binder-postgres
+# Interactive Python <-> Postgres Demo including Homework problem 8
+
+Run online at
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gipplab/w22-binder-postgres/master)
 
-Demo of launching a binderhub notebook server with a free running Postgres server.
-
-Postgres is installed via Anaconda; the databases is initialised into  `/srv/conda/pgsql` (the `/src/conda` (and if it exists `/srv/npm`) path is the only writeable path outside of `$HOME`).
-
-The `init_db/postgres/init.db` file is called to set up any required users, databases, etc, and it in turn seeds a test database as defined in `init_db/postgres/seed_db.sql`. The `init_db` directory is also copied into `/srv/conda` so the user can check on the initialisation set-up if required.  
+Or start the service locally following the instructions below
 
 
-Example via [@manics on Jupyter dscourse site](https://discourse.jupyter.org/t/running-arbitrary-services-alongside-jupyter-notebooks-in-binderhub/299/10?u=psychemedia) [[gist](https://gist.github.com/manics/e1392b4368cff1b92c362f121215ce84)].
-
-See the other branches for versions that do, albeit at the expense of using a Dockerfile.
-
-See also: https://blog.ouseful.info/2019/02/04/running-a-postgresql-server-in-a-mybinder-container/
+1. Install [Docker-Compose](https://docs.docker.com/compose/install/)
+2. Install [GIT](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+3. Open a [terminal](https://towardsdatascience.com/a-quick-guide-to-using-command-line-terminal-96815b97b955) 
+4. Checkout this repository via `git clone https://github.com/gipplab/ws22-postgres-python.git`
+5. Start the containers via `docker-compose up -d`
+6. Navigate to your [local jupyter notebook server](http://localhost:8888)
 
 
